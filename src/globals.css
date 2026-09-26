@@ -1,0 +1,122 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Neutral starting palette — intentionally uncommitted. Retune every token
+       here to suit the brief (warm, cool, dark, high-contrast, playful...) rather
+       than hardcoding hex values in components. */
+    --background: 40 33% 95%; /* #F7F4EE Warm Ivory */
+    --foreground: 240 10% 10%; /* #121217 Executive Charcoal */
+
+    --card: 40 33% 97%;
+    --card-foreground: 240 10% 10%;
+
+    --popover: 40 33% 97%;
+    --popover-foreground: 240 10% 10%;
+
+    --primary: 256 33% 19%; /* #28203F Deep Indigo */
+    --primary-foreground: 40 33% 95%;
+
+    --secondary: 256 27% 29%; /* #40365F Royal Violet */
+    --secondary-foreground: 40 33% 95%;
+
+    --muted: 256 17% 41%; /* #62577A Muted Plum */
+    --muted-foreground: 256 10% 70%;
+
+    --accent: 43 32% 59%; /* #B6A47A Metallic */
+    --accent-foreground: 256 33% 19%;
+
+    --soft-stone: 36 24% 91%; /* Warm stone tint, between ivory bg and border for section alternation */
+    --soft-stone-foreground: 256 33% 19%;
+
+    --border: 256 10% 85%;
+    --input: 256 10% 85%;
+    --ring: 256 33% 19%;
+
+    --radius: 0.5rem;
+
+    --font-display: "DM Serif Display", serif;
+    --font-sans: "Plus Jakarta Sans", sans-serif;
+
+    --sidebar-background: 40 30% 96%;
+    --sidebar-foreground: 24 8% 26%;
+    --sidebar-primary: 20 14% 13%;
+    --sidebar-primary-foreground: 40 33% 98%;
+    --sidebar-accent: 36 22% 92%;
+    --sidebar-accent-foreground: 20 14% 13%;
+    --sidebar-border: 34 18% 87%;
+    --sidebar-ring: 24 30% 45%;
+  }
+
+  .dark {
+    /* Neutral dark counterpart — retune alongside the light tokens above. */
+    --background: 256 33% 12%; /* Deeper Indigo */
+    --foreground: 40 33% 95%;
+
+    --card: 256 33% 15%;
+    --card-foreground: 40 33% 95%;
+
+    --popover: 256 33% 15%;
+    --popover-foreground: 40 33% 95%;
+
+    --primary: 40 33% 95%;
+    --primary-foreground: 256 33% 19%;
+
+    --secondary: 256 27% 29%;
+    --secondary-foreground: 40 33% 95%;
+
+    --muted: 256 17% 41%;
+    --muted-foreground: 256 10% 70%;
+
+    --accent: 43 32% 59%;
+    --accent-foreground: 256 33% 19%;
+
+    --soft-stone: 256 27% 22%;
+    --soft-stone-foreground: 40 33% 95%;
+
+    --border: 256 20% 25%;
+    --input: 256 20% 25%;
+    --ring: 40 33% 95%;
+
+    --sidebar-background: 240 8% 9%;
+    --sidebar-foreground: 0 0% 90%;
+    --sidebar-primary: 0 0% 95%;
+    --sidebar-primary-foreground: 240 10% 9%;
+    --sidebar-accent: 240 5% 16%;
+    --sidebar-accent-foreground: 0 0% 95%;
+    --sidebar-border: 240 5% 18%;
+    --sidebar-ring: 240 5% 60%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  /* Safety net only — real overflow sources are fixed at the component level
+     (grid tracks, flex min-widths, etc). Kept as a last line of defense so a
+     future regression clips instead of introducing page-wide horizontal scroll. */
+  html,
+  body {
+    overflow-x: clip;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  /* Headings use the display role. Until --font-display is set to a real face
+     this is the same stack as the body, i.e. no hierarchy — which is the signal
+     that a type pair still needs choosing. */
+  h1,
+  h2,
+  h3 {
+    font-family: var(--font-display);
+  }
+}
